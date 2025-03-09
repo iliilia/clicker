@@ -47,4 +47,22 @@ describe('Application launch', function() {
         const isVisible = await button.isDisplayed();
         expect(isVisible).to.be.true;
     });
+
+    it('кнопка Start имеет красный цвет', async function() {
+        const button = await browser.$('#startButton');
+        await button.waitForExist({ timeout: 5000 });
+
+        // Получаем значение background-color
+        const backgroundColor = await button.getCSSProperty('background-color');
+
+        // Проверяем, что цвет красный (в формате rgb)
+        expect(backgroundColor.value).to.equal('rgb(255,0,0)');
+
+        // Проверяем цвет при наведении
+        await button.moveTo();
+        await browser.pause(1000); // Ждем применения hover эффекта
+
+        const hoverBackgroundColor = await button.getCSSProperty('background-color');
+        expect(hoverBackgroundColor.value).to.equal('rgb(204,0,0)');
+    });
 });
