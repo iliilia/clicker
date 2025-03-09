@@ -4,13 +4,18 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --config .mocharc.js",
+    "test:watch": "mocha --watch --config .mocharc.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron": "^35.0.0"
+    "chai": "^4.3.7",
+    "chromedriver": "^134.0.0",
+    "electron": "^35.0.0",
+    "mocha": "^10.2.0",
+    "webdriverio": "^8.32.3"
   }
 }
